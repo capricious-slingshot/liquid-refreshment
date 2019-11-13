@@ -1,11 +1,1 @@
 this is the users/index page
-<% #user.beers.each do |beer| %>
-<section>
-  <h3><%= #beer.name %></h3>
-  <p><%= #beer.description %></p>
-  <p><%= #beer.user_rating %></p>
-  <p><%= #beer.overall_rating %></p>
-  <p><%= #beer.tasting_notes %></p>
-  <p><a href="/<%= beer.id %>/edit">Edit</a> | <a href="/delete">Delete</a></p>
-</section>
-<% #end %>

@@ -1,16 +1,76 @@
+/* For mobile phones: */
+
 #mainContent {
-  margin: 0 auto auto;
-  width: 50%;
-}
-#mainContent nav li {
-  border: 1px solid #000;
-  width: 15%;
-  float: right;
-  text-align: center;
-  padding: 5px;
+  margin: 2em auto auto;
   font-size: 15px;
+  width: 75%;
+  font-family: sans-serif;
+  background-color: #000;
+  color: #fff;
+  border-radius: 2px;
+}
+#mainContent nav li a{
+  display: block;
+  float: left;
+  width: 42%;
+  text-align: center;
+  margin: 10px;
+  text-decoration: none;
 }
 #mainContent h1{
-  padding: 5px;
-  border: 1px solid #000;
+  clear: both;
+  padding: 10px 5px;
+  font-size: 20px;
+  background-color: #fff;
+  color: #000;
+}
+#mainContent h2{
+  text-align: center;
+  margin: 2em;
+}
+#mainContent #login{
+  padding: 15px;
+}
+#mainContent input, #mainContent label{
+  display: block;
+  width: 88%;
+  margin: 10px 0;
+  padding: 2px;
+}
+#mainContent input{
+  padding: 1em;
+}
+#mainContent .submit{
+  display: block;
+  font-size: 18px;
+  width: 80%;
+  margin: 2em auto;
+  padding: 15px;
+  background: red;
+  border: none;
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+#mainContent #login{
+  margin: 2em auto 2em;
+  width: 50%;
+}
+#mainContent nav li a{
+  float: right;
+  width: 15%;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  #mainContent #login{
+      margin: 5em auto 5em;
+      width: 25%;
+   }
+
+   #mainContent nav li a{
+     float: right;
+     width: 10%;
+   }
 }
