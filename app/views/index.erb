@@ -1,10 +1,16 @@
 <div id="mainContent">
   <nav>
     <ul>
-
+      <% if !logged_in? %>
+        <li>Login</li>
+        <li>Signup</li>
+      <% else %>
+        <li>My List</li>
+        <li>Leaderboard</li>
+      <% end %>
     </ul>
   </nav>
-  <h1>Liquid Refreshment</h1>
+  <h1>Cloudburst Brewing</h1>
 
 
 </div>
