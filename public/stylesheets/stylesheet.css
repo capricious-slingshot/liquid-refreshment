@@ -14,26 +14,27 @@
   display: block;
   float: left;
   text-align: center;
-  margin: 10px;
   text-decoration: none;
+  color: #006bb3;
+  font-size: 13px;
+  width: 24%;
+  margin: 12px 2px 5px 2px;
 }
-#mainContent .menu-item{
-    width: 33%;
+#mainContent .quick-menu{
+    width:18%;
 }
 
 #mainContent #settings-icon{
-  margin: 0;
+  margin: 0 5px;
   padding: 4px 5px;
-  width: 25px;
-  position: relative;
-  top: 0px;
-  right: 0px;
+  width: 35px;
+  height: 30px;
+  display: block;
 }
 
 #mainContent #settings-icon img{
-  display: block;
-  width: 25px;
-  height: 25px;
+  height: 32px;
+  width: 35px;
 }
 
 #mainContent .flash{
@@ -45,11 +46,13 @@
 }
 
 #mainContent .success{
-  background-color: green;
+  color: #000;
+  background-color: #66e0ff;
 }
 
 #mainContent .error{
-  background-color: red;
+  color: #000;
+  background-color: #cc0066;
 }
 
 #mainContent h1{
@@ -65,7 +68,7 @@
   margin: 2em;
 }
 
-#mainContent #form-wrapper{
+#mainContent section{
   padding: 15px;
 }
 
@@ -86,7 +89,7 @@
   width: 80%;
   margin: 2em auto;
   padding: 15px;
-  background: red;
+  background: #006bb3;
   border: none;
   border-radius: 10px;
 }
@@ -99,6 +102,9 @@
 }
 #mainContent nav li a{
   float: right;
+}
+#mainContent .quick-menu{
+    width: 15%;
 }
 #mainContent .menu-item{
     width: 20%;
@@ -115,6 +121,9 @@
      float: right;
    }
    #mainContent .menu-item{
-     width: 15%;
+     width:12%;
+   }
+   #mainContent .quick-menu{
+       width: 10%;
    }
 }

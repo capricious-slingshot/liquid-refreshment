@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   get '/settings' do
-    erb :'/users/edit'
+    if logged_in?
+      erb :'/users/edit'
+    else
+       redirect '/'
+    end
   end
 
   get '/:slug/beers' do

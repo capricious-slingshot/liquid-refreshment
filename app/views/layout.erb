@@ -14,14 +14,16 @@
     <div id="mainContent">
       <nav>
         <ul>
+          <li><a href="/settings" id="settings-icon"><img src="/images/settings-icon.jpg" alt="User Settings"></a></li>
           <% if !logged_in? %>
-            <li><a href="/login">Log In</a></li>
-            <li><a href="/signup">Signup</a></li>
+            <li><a href="/login" class="quick-menu">Log In</a></li>
+            <li><a href="/signup"class="quick-menu">Signup</a></li>
           <% else %>
-            <li><a href="/settings" id="settings-icon"><img src="/images/settings-icon.png" alt="User Settings"></a></li>
-            <li><a href="/leaderboard" class="menu-item">Leaderboard</a></li>
+            <li><a href="/logout"class="menu-item" >Log Out</a></li>
             <li><a href="/" class="menu-item">My Beers</a></li>
+            <li><a href="/leaderboard" class="menu-item">Leaderboard</a></li>
           <% end %>
+
         </ul>
       </nav>
       <h1>Cloudburst Brewing</h1>
