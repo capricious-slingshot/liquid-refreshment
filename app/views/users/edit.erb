@@ -1,0 +1,23 @@
+<section id="form-wrapper">
+  <h2>User Settings</h2>
+  <form action="/users/edit" method="POST">
+    <input type="hidden" name="_name" value="patch">
+    <p>
+      <label for="current-password">Current Password:</label>
+      <input type="password" name="current_password" id="current-password">
+    </p>
+    <p>
+      <label for="new-username">Username:</label>
+      <input type="text" name="username" id="new-username">
+    </p>
+    <p>
+      <label for="new-email">Email:</label>
+      <input type="text" name="email" id="new-email">
+    </p>
+    <p>
+      <label for="new-password">New Password:</label>
+      <input type="password" name="new_password" id="new-password">
+    </p>
+    <input type="submit" value="Update" class="submit">
+  </form>
+</section>

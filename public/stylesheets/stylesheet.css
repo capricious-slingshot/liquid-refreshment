@@ -13,23 +13,29 @@
 #mainContent nav li a{
   display: block;
   float: left;
-  width: 42%;
   text-align: center;
   margin: 10px;
   text-decoration: none;
 }
+#mainContent .menu-item{
+    width: 33%;
+}
+
 #mainContent #settings-icon{
   margin: 0;
-  padding: 5px 0;
-  width: 4%;
-
+  padding: 4px 5px;
+  width: 25px;
+  position: relative;
+  top: 0px;
+  right: 0px;
 }
+
 #mainContent #settings-icon img{
   display: block;
   width: 25px;
   height: 25px;
-  margin: 0;
 }
+
 #mainContent .flash{
   text-align: center;
   float: left;
@@ -37,9 +43,11 @@
   display: block;
   padding: 10px 0;
 }
+
 #mainContent .success{
   background-color: green;
 }
+
 #mainContent .error{
   background-color: red;
 }
@@ -51,22 +59,27 @@
   background-color: #fff;
   color: #000;
 }
+
 #mainContent h2{
   text-align: center;
   margin: 2em;
 }
-#mainContent #login{
+
+#mainContent #form-wrapper{
   padding: 15px;
 }
+
 #mainContent input, #mainContent label{
   display: block;
   width: 88%;
   margin: 10px 0;
   padding: 2px;
 }
+
 #mainContent input{
   padding: 1em;
 }
+
 #mainContent .submit{
   display: block;
   font-size: 18px;
@@ -86,7 +99,9 @@
 }
 #mainContent nav li a{
   float: right;
-  width: 15%;
+}
+#mainContent .menu-item{
+    width: 20%;
 }
 
 @media only screen and (min-width: 768px) {
@@ -98,6 +113,8 @@
 
    #mainContent nav li a{
      float: right;
-     width: 10%;
+   }
+   #mainContent .menu-item{
+     width: 15%;
    }
 }
