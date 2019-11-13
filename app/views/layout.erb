@@ -18,13 +18,20 @@
             <li><a href="/login">Log In</a></li>
             <li><a href="/signup">Signup</a></li>
           <% else %>
-            <li>My Ratings</li>
+            <li><a href="/settings" id="settings-icon"><img src="/images/settings-icon.png" alt="User Settings"></a></li>
             <li><a href="/leaderboard">Leaderboard</a></li>
+            <li><a href="/">My Ratings</a></li>
           <% end %>
         </ul>
       </nav>
       <h1>Cloudburst Brewing</h1>
-
+      <% if flash[:success] %>
+        <p class="flash success"><%= flash[:success] %></p>
+      <% elsif flash[:error] %>
+        <% flash[:error].each do |message| %>
+          <p class="flash error"><%= message %></p>
+        <% end %>
+      <% end %>
       <%= yield %>
     </div>
 
