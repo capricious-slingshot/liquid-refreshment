@@ -15,6 +15,26 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+  get '/login' do
+    if !logged_in?
+      erb :'/sessions/login'
+    else
+      redirect '/leaderboard'
+    end
+  end
+
+  post '/login' do
+    login(params[:email], params[:password])
+    user = User.find_by(email: params[:email])
+    flash[:success] = "Let's drink some beer, #{user.username.capitalize}!"
+    redirect "/#{user.slug}/beers"
+  end
+
+  get '/logout' do
+    logout!
+    redirect '/leaderboard'
+  end
+
   helpers do
     def logged_in?
       !!session[:email]
