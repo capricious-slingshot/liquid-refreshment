@@ -5,7 +5,6 @@ require 'bundler/setup'
 require 'active_record'
 
 Bundler.require(:default, ENV['SINATRA_ENV'])
-
 require './app/controllers/application_controller'
 
 
