@@ -29,5 +29,4 @@ end
 group :test do
   gem "rspec", '3.9.0'
   gem "capybara", '3.29.0'
-  gem "rspec", '3.9.0'
 end

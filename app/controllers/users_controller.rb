@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if logged_in?
-      user = User.find_by(email: session[:email])
+      user = User.find_by(id: session[:user_id])
       redirect "/#{user.slug}/beers"
     else
       erb :'/sessions/signup'
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     user = User.new(params)
     if user.valid? && user.errors.empty?
       user.save
-      login(params[:email], params[:password])
+      login(params[:user_id], params[:password])
       flash[:success] = "Welcome, #{user.username.capitalize}! \n Let's drink some Beer!"
       redirect "/#{user.slug}/beers"
     else

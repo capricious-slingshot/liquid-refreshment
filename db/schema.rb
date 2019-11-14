@@ -17,14 +17,13 @@ ActiveRecord::Schema.define(version: 20191113025230) do
     t.datetime "created_at"
     t.string   "name"
     t.string   "description"
-    t.integer  "overall_rating"
   end
 
   create_table "opinions", force: :cascade do |t|
     t.datetime "created_at"
     t.integer  "user_id"
     t.integer  "beer_id"
-    t.string   "user_rating"
+    t.integer  "user_rating"
     t.string   "tasting_notes"
   end
 
