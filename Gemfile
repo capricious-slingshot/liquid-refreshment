@@ -4,7 +4,7 @@ ruby "2.6.1"
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem "sinatra", '2.0.7'
-gem 'activerecord', '4.2.7.1', :require => 'active_record'
+gem 'activerecord', '6.0.1', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake', '13.0.1'
 gem 'require_all', '3.0.0'
