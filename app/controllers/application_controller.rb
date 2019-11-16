@@ -24,8 +24,8 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
-    login(params[:user_id], params[:password])
-    user = User.find_by(email: params[:user_id])
+    login(params[:email], params[:password])
+    user = User.find_by(email: params[:email])
     flash[:success] = "Let's drink some beer, #{user.username.capitalize}!"
     redirect "/#{user.slug}/beers"
   end

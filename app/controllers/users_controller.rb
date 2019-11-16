@@ -22,9 +22,10 @@ class UsersController < ApplicationController
 
   post '/signup' do
     user = User.new(params)
+    binding.pry
     if user.valid? && user.errors.empty?
       user.save
-      login(params[:user_id], params[:password])
+      login(params[:email], params[:password])
       flash[:success] = "Welcome, #{user.username.capitalize}! \n Let's drink some Beer!"
       redirect "/#{user.slug}/beers"
     else
