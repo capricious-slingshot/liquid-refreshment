@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates :email, email: true, uniqueness: { case_sensitive: false }, length: { minimum: 8 }
+  validates :email, email: true, uniqueness: { case_sensitive: false }
+  validates :password, length: { minimum: 8 }
   has_secure_password
   has_many :beers
   has_many :beers, through: :opinions

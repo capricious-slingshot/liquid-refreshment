@@ -27,14 +27,16 @@
         </ul>
       </nav>
       <h1>Cloudburst Brewing</h1>
-      <% if flash[:success] %>
-        <p class="flash success"><%= flash[:success] %></p>
-      <% elsif flash[:error] %>
-        <% flash[:error].each do |message| %>
-          <p class="flash error"><%= message %></p>
+        <% if flash[:success] %>
+          <p class="flash" id="success"><%= flash[:success] %></p>
+        <% elsif flash[:error] %>
+          <% flash[:error].each do |message| %>
+            <p class="flash" id="error"><%= message %></p>
+          <% end %>
         <% end %>
-      <% end %>
-      <%= yield %>
+        <section id="views">
+          <%= yield %>
+        </section>
     </div>
 
   </body>
