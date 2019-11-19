@@ -6,5 +6,4 @@ use Rack::MethodOverride
 
 use BeersController
 use UsersController
-use SessionsController
 run ApplicationController

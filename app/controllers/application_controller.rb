@@ -12,14 +12,36 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :index
+    redirect '/beers'
+  end
+
+  get '/signup' do
+    if logged_in?
+      user = User.find_by(id: session[:user_id])
+      redirect "/beers/#{user.slug}"
+    else
+      erb :'/sessions/signup'
+    end
+  end
+
+  post '/signup' do
+    user = User.new(params)
+    if user.valid? && user.errors.empty?
+      user.save
+      login(params[:email], params[:password])
+      flash[:success] = "Welcome, #{user.username.capitalize}! \n Let's drink some Beer!"
+      redirect "/beers/#{user.slug}"
+    else
+      flash[:error] = user.errors.full_messages
+      redirect '/signup'
+    end
   end
 
   get '/login' do
     if !logged_in?
       erb :'/sessions/login'
     else
-      redirect '/leaderboard'
+      redirect '/beers'
     end
   end
 
@@ -27,12 +49,12 @@ class ApplicationController < Sinatra::Base
     login(params[:email], params[:password])
     user = User.find_by(email: params[:email])
     flash[:success] = "Let's drink some beer, #{user.username.capitalize}!"
-    redirect "/#{user.slug}/beers"
+    redirect "/beers/#{user.slug}"
   end
 
   get '/logout' do
     logout!
-    redirect '/leaderboard'
+    redirect '/login'
   end
 
   helpers do
@@ -53,6 +75,10 @@ class ApplicationController < Sinatra::Base
     def logout!
       session.clear
     end
-  end
 
+    def build_slug
+      user = User.find_by(id: session[:user_id])
+      user ? user.slug : ""
+    end
+  end
 end

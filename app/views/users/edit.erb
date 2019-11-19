@@ -1,18 +1,18 @@
 
-  <h2>User Settings</h2>
-  <form action="/users/edit" method="POST">
-    <input type="hidden" name="_name" value="patch">
+  <h2>Update Settings</h2>
+  <form action="/settings/edit" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
     <p>
       <label for="current-password">Current Password:</label>
       <input type="password" name="current_password" id="current-password">
     </p>
     <p>
       <label for="new-username">Username:</label>
-      <input type="text" name="username" id="new-username">
+      <input type="text" name="username" value="<%= user.username %>" id="new-username">
     </p>
     <p>
       <label for="new-email">Email:</label>
-      <input type="text" name="email" id="new-email">
+      <input type="text" name="email" value="<%= user.email %>" id="new-email">
     </p>
     <p>
       <label for="new-password">New Password:</label>
