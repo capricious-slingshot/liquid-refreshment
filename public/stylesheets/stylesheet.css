@@ -23,6 +23,13 @@ body{
   width: 24%;
   padding: 20px 0;
 }
+#mainContent nav li a:hover {
+  color: #2AD2C9;
+}
+#mainContent nav li a#on {
+  color: #2AD2C9;
+}
+
 #mainContent .quick-menu{
   width:18%;
 }

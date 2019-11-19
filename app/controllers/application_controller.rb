@@ -80,5 +80,9 @@ class ApplicationController < Sinatra::Base
       user = User.find_by(id: session[:user_id])
       user ? user.slug : ""
     end
+
+    def active_page?(path='')
+      request.path_info == '/' + path
+    end
   end
 end

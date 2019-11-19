@@ -15,14 +15,15 @@
       <nav>
         <ul>
           <% if !logged_in? %>
+          <% #binding.pry %>
             <li><a href="" id="settings-icon"><img src="/images/settings-icon.jpg" alt="User Settings"></a></li>
-            <li><a href="/login" class="quick-menu">Log In</a></li>
-            <li><a href="/signup"class="quick-menu">Signup</a></li>
+            <li><a href="/login" class="quick-menu" <%= 'id="on"' if active_page?("login") %>">Log In</a></li>
+            <li><a href="/signup" class="quick-menu" <%= 'id="on"' if active_page?("signup") %>">Signup</a></li>
           <% else %>
             <li><a href="/settings" id="settings-icon"><img src="/images/settings-icon.jpg" alt="User Settings"></a></li>
             <li><a href="/logout"class="menu-item" >Log Out</a></li>
-            <li><a href="/beers/<%= build_slug %>" class="menu-item">My Beers</a></li>
-            <li><a href="/beers" class="menu-item">Leaderboard</a></li>
+            <li><a href="/beers/<%= build_slug %>" class="menu-item" <%= 'id="on"' if active_page?("beers/#{build_slug}") %>">My Beers</a></li>
+            <li><a href="/beers" class="menu-item" <%= 'id="on"' if active_page?("beers") %>">Leaderboard</a></li>
           <% end %>
         </ul>
       </nav>
