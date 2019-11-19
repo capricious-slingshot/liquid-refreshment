@@ -1,5 +1,9 @@
-/* For mobile phones: */
-
+/* Mobile First */
+body{
+  background: url(../images/sign.png);
+  background-size: cover;
+  background-color: #cccccc;
+}
 #mainContent {
   margin: auto;
   font-size: 16px;
@@ -41,6 +45,7 @@
   font-size: 20px;
   background-color: #fff;
   color: #000;
+  border-bottom: 5px solid #2AD2C9;
 }
 
 #mainContent .flash{
