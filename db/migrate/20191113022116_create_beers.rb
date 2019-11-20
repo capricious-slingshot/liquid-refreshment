@@ -4,7 +4,6 @@ class CreateBeers < ActiveRecord::Migration
       t.datetime :created_at
       t.string   :name
       t.string   :description
-      t.integer  :overall_rating
     end
   end
 end
