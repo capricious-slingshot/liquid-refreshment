@@ -9,7 +9,7 @@ body{
   font-size: 16px;
   width: 75%;
   font-family: sans-serif;
-  background-color: #000;
+  background: rgba(0, 0, 0, 0.65);
   color: #fff;
   border-radius: 2px;
 }
@@ -22,6 +22,7 @@ body{
   color: #006bb3;
   width: 24%;
   padding: 20px 0;
+  /* opacity: 1.0; */
 }
 #mainContent nav li a:hover {
   color: #2AD2C9;
@@ -99,6 +100,25 @@ body{
   background: #006bb3;
   border: none;
   border-radius: 10px;
+}
+#views article {
+  background: rgba(158, 122, 85, 0.85);
+  margin: 20px;
+  padding: 20px;
+  color:  #000;
+}
+article h4 a{
+  font: small-caps 30px 'Marker Felt';
+  text-decoration: none;
+  color: #000;
+}
+article p{
+  font-size:18px;
+  line-height: 1.2em;
+  margin: 20px 0;
+}
+article aside {
+  font: small-caps 20px 'Marker Felt';
 }
 
 @media only screen and (min-width: 600px) {
