@@ -1,10 +1,9 @@
-
 <% beers.each do |beer| %>
   <article>
     <h4><a href="/beers/<%= beer.id %>/edit"><%= beer.name %></a></h4>
     <p><%= beer.description %></p>
     <aside>
-      Raiting: <% overall_rating.times do %><span>⭐</span><% end %>
+      ⭐ Raiting: <span><%= overall_rating(beer)%></span>
     </aside>
   </article>
 <% end %>

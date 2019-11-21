@@ -7,14 +7,6 @@ class BeersController < ApplicationController
     end
   end
 
-  get '/beers/:id/edit' do
-    if logged_in?
-      erb :'/beers/edit', locals: { beers: Beer.all }
-    else
-      redirect '/login'
-    end
-  end
-
   get '/beers/:slug' do
     if logged_in?
       user = User.find_by_slug(params[:slug])
@@ -25,9 +17,12 @@ class BeersController < ApplicationController
   end
 
   helpers do
-    def overall_rating
-      #if rating is <= 1 "Not Enough Raitings"
-      3
+    def overall_rating(beer)
+      if beer.opinions.blank?
+        "Not Enough Raitings"
+      else
+        beer.opinions.average(:user_rating).to_f.round(1)
+      end
     end
   end
 end

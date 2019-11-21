@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   validates :email, email: true, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 8 }
   has_secure_password
-  has_many :beers
+  has_many :opinions
   has_many :beers, through: :opinions
 
   def slug
