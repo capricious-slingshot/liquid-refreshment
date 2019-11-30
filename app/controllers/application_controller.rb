@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
   get '/signup' do
     if logged_in?
       user = User.find_by(id: session[:user_id])
-      redirect "/beers/#{user.slug}"
+      redirect "/users/#{user.slug}/beers"
     else
       erb :'/sessions/signup'
     end
@@ -30,7 +30,7 @@ class ApplicationController < Sinatra::Base
       user.save
       login(params[:email], params[:password])
       flash[:success] = "Welcome, #{user.username.capitalize}! \n Let's drink some Beer!"
-      redirect "/beers/#{user.slug}"
+      redirect "/users/#{user.slug}/beers"
     else
       flash[:error] = user.errors.full_messages
       redirect '/signup'
@@ -49,7 +49,7 @@ class ApplicationController < Sinatra::Base
     login(params[:email], params[:password])
     user = User.find_by(email: params[:email])
     flash[:success] = "Let's drink some beer, #{user.username.capitalize}!"
-    redirect "/beers/#{user.slug}"
+    redirect "/users/#{user.slug}/beers"
   end
 
   get '/logout' do
