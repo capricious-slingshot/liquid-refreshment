@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20191113025230) do
 
   create_table "beers", force: :cascade do |t|
     t.datetime "created_at"
+    t.integer  "created_by"
     t.string   "name"
     t.string   "description"
   end

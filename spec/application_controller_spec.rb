@@ -29,7 +29,6 @@ describe ApplicationController do
     after(:each) do
       puts last_response.body
       # get '/logout'
-      # binding.pry
       # User.find_by(username: @params[:username]).delete
     end
 
