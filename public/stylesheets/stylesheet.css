@@ -4,6 +4,7 @@ body{
   background-size: cover;
   background-color: #cccccc;
 }
+
 #mainContent {
   margin: auto;
   font-size: 16px;
@@ -22,11 +23,12 @@ body{
   color: #006bb3;
   width: 24%;
   padding: 20px 0;
-  /* opacity: 1.0; */
 }
+
 #mainContent nav li a:hover {
   color: #2AD2C9;
 }
+
 #mainContent nav li a#on {
   color: #2AD2C9;
 }
@@ -47,6 +49,7 @@ body{
   width: 45px;
   display: block;
 }
+
 #mainContent h1{
   clear: both;
   padding: 10px 5px;
@@ -72,6 +75,7 @@ body{
 #mainContent #error{
   background-color: #cc0066;
 }
+
 #views{
   padding: 20px;
 }
@@ -101,39 +105,69 @@ body{
   border: none;
   border-radius: 10px;
 }
+
 #views article {
   background: rgba(158, 122, 85, 0.85);
   margin: 20px;
   padding: 20px;
   color:  #000;
+  overflow: hidden;
 }
+
 article h4 a{
   font: small-caps 30px 'Marker Felt';
   text-decoration: none;
   color: #000;
 }
+
 article p{
   font-size:18px;
   line-height: 1.2em;
-  margin: 20px 0;
+  margin: 20px 0 0;
 }
-article aside {
+
+#views article .rating {
   font: small-caps 20px 'Marker Felt';
 }
 
-@media only screen and (min-width: 600px) {
-  /* For tablets: */
-#mainContent nav li a{
+#views article .button{
+  font-size:18px;
   float: right;
+  width: 105px;
+  border: 2px solid #2AD2C9;
+  box-shadow: 0 0 0 2px skyblue;
+  text-align: center;
+  text-decoration: none;
+  background: #006bb3;
+  color: #2AD2C9;
+  padding: 8px 0;
+  border-radius: 15px;
+  margin: 10px;
 }
-#mainContent .quick-menu{
-    width: 15%;
+
+#views article .button:hover{
+  background: #2AD2C9;
+  color: #006bb3;
+  cursor: pointer;
 }
-#mainContent .menu-item{
-    width: 20%;
-}
+
+/* For tablets: */
+@media only screen and (min-width: 600px) {
+
+  #mainContent nav li a{
+    float: right;
+  }
+
+  #mainContent .quick-menu{
+      width: 15%;
+  }
+
+  #mainContent .menu-item{
+      width: 20%;
+  }
+
+/* For desktop: */
 @media only screen and (min-width: 768px) {
-  /* For desktop: */
 
    #mainContent nav li a{
      float: right;

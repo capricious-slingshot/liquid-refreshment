@@ -1,0 +1,27 @@
+<article>
+  <h4><a href="/beers/<%= beer.id %>/edit"><%= beer.name %></a></h4>
+  <p><%= beer.description %></p>
+  <div class="rating">
+    <p>⭐ Rating: <span><%= overall_rating(beer)%></span></p>
+  </div>
+  <% if review %>
+  <div>
+    <p class="rating">My Raiting: <span><%= review.user_rating %></span></p>
+    <p>Tasting notes: <%= review.tasting_notes %></p>
+  </div>
+  <% end %>
+
+  <% if logged_in? %>
+  <div>
+    <% if owner?(beer) %>
+      <p>
+        <form action="/beers/<%= beer.id %>/delete" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="delete" class="button">
+        </form>
+      </p>
+    <% end %>
+    <p><a href="/beers/<%= beer.id %>/edit" class="button">edit</a></p>
+  </div>
+  <% end %>
+</article>
