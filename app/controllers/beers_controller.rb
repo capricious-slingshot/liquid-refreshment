@@ -14,11 +14,39 @@ class BeersController < ApplicationController
     erb :'/beers/show', locals: {review: review, beer: beer}
   end
 
+  get '/beers/:id/edit' do
+    beer = Beer.find_by(id: params[:id])
+
+    if logged_in?
+      erb :'/beers/edit', locals: { beer: beer }
+    else
+      flash[:error] = "Access Denied"
+      redirect '/login'
+    end
+  end
+
+  patch '/beers/:id/edit' do
+    beer = Beer.find_by(id: params[:id])
+    if logged_in?
+      beer.name = params[:name]
+      beer.description = params[:description]
+      if beer.save && beer.errors.empty?
+        flash[:success] = "Scuccessfully Updated #{beer.name.capitalize}"
+        redirect "/beers/#{beer.id}"
+      else
+        flash[:error] = beer.errors.full_messages
+        redirect "/beers/#{beer.id}/edit"
+      end
+    else
+      flash[:error] = "Access Denied"
+      redirect '/login'
+    end
+  end
+
   delete '/beers/:id/delete' do
     beer = Beer.find_by(id: params[:id])
 
     if logged_in? && owner?(beer)
-
       if beer.delete && beer.errors.empty?
         flash[:success] = "Scuccessfully Deleted #{beer.name.capitalize}"
         redirect '/beers'
@@ -27,7 +55,6 @@ class BeersController < ApplicationController
         redirect "/beers/#{params[:id]}"
       end
     end
-
   end
 
   helpers do

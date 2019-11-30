@@ -1,0 +1,10 @@
+<article>
+  <form action="/beers/<%= beer.id %>/edit" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <label for="name">Name of Beer:</label>
+    <input type="text" name="name" value="<%= beer.name %>" id="name">
+    <label for="description">Description:</label>
+    <input type="text" name="description" id="description" value="<%= beer.description %>">
+    <input type="submit" value="Update" class="button">
+  </form>
+</article>
