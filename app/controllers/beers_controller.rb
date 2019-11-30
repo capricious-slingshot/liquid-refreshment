@@ -3,15 +3,19 @@ class BeersController < ApplicationController
     if logged_in?
       erb :'/beers/index', locals: { beers: Beer.all }
     else
-      redirect '/login'
+      access_denied
     end
   end
 
   get '/beers/:id' do
     beer = Beer.find_by(id: params[:id])
-    user = User.find_by(id: session[:user_id])
-    review = user && user.opinions.find_by(beer_id: beer.id)
-    erb :'/beers/show', locals: {review: review, beer: beer}
+    if logged_in?
+      user = User.find_by(id: session[:user_id])
+      review = user && user.opinions.find_by(beer_id: beer.id)
+      erb :'/beers/show', locals: {review: review, beer: beer}
+    else
+      access_denied
+    end
   end
 
   get '/beers/:id/edit' do
@@ -20,8 +24,7 @@ class BeersController < ApplicationController
     if logged_in?
       erb :'/beers/edit', locals: { beer: beer }
     else
-      flash[:error] = "Access Denied"
-      redirect '/login'
+      access_denied
     end
   end
 
@@ -38,8 +41,7 @@ class BeersController < ApplicationController
         redirect "/beers/#{beer.id}/edit"
       end
     else
-      flash[:error] = "Access Denied"
-      redirect '/login'
+      access_denied
     end
   end
 
@@ -48,12 +50,14 @@ class BeersController < ApplicationController
 
     if logged_in? && owner?(beer)
       if beer.delete && beer.errors.empty?
-        flash[:success] = "Scuccessfully Deleted #{beer.name.capitalize}"
+        flash[:success] = "Successfully Deleted #{beer.name.capitalize}"
         redirect '/beers'
       else
-        flash[:error] = ["Something went wrong"] << user.errors.full_messages
+        flash[:error] = user.errors.full_messages
         redirect "/beers/#{params[:id]}"
       end
+    else
+      access_denied
     end
   end
 

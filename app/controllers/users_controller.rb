@@ -5,7 +5,7 @@ class UsersController < ApplicationController
       user = User.find_by_slug(params[:slug])
       erb :'users/index', locals: {user: user}
     else
-      redirect '/login'
+      access_denied
     end
   end
 
@@ -13,8 +13,7 @@ class UsersController < ApplicationController
     if logged_in? && user = User.find_by(id: session[:user_id])
       erb :'/users/edit', locals: {user: user}
     else
-      flash[:error] = ["Access Denied"]
-      redirect "/login"
+      access_denied
     end
   end
 
@@ -38,10 +37,8 @@ class UsersController < ApplicationController
         flash[:error] = user.errors.full_messages
         redirect "/users/#{user.slug}/settings"
       end
-
     else
-      flash[:error] = ["Access Denied"]
-      redirect "/login"
+      access_denied
     end
   end
 end

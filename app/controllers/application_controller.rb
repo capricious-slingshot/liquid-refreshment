@@ -12,7 +12,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    redirect '/beers'
+    if logged_in?
+      redirect '/beers'
+    else
+      redirect '/login'
+    end
   end
 
   get '/signup' do
@@ -83,6 +87,11 @@ class ApplicationController < Sinatra::Base
 
     def active_page?(path='')
       request.path_info == '/' + path
+    end
+
+    def access_denied
+      flash[:error] = ["Access Denied"]
+      redirect '/login'
     end
   end
 end
