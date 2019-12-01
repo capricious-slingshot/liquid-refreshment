@@ -1,1 +1,16 @@
 <h2>My Beers</h2>
+
+<% if user.beers.empty?%>
+  <article>
+    <h3> Looks like you havent rated any beers yet!  Lets get started!</h3>
+    <a href="/" class="button">Lets go!</a>
+  </article>
+<% else %>
+  <% user.beers.each do |beer| %>
+  <article>
+    <h4><a href="/beers/<%= beer.id %>"><%= beer.name %></a></h4>
+    <p><%= beer.description %></p>
+    <p class="rating">⭐ Raiting: <span><%= overall_rating(beer)%></span></p>
+  </article>
+  <% end %>
+<% end %>

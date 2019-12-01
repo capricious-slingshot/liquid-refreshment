@@ -20,9 +20,10 @@ class BeersController < ApplicationController
 
   get '/beers/:id/edit' do
     beer = Beer.find_by(id: params[:id])
+    opinion = beer.opinions.find_by(user_id: session[:user_id])
 
     if logged_in?
-      erb :'/beers/edit', locals: { beer: beer }
+      erb :'/beers/edit', locals: { beer: beer, opinion: opinion }
     else
       access_denied
     end
@@ -30,11 +31,15 @@ class BeersController < ApplicationController
 
   patch '/beers/:id/edit' do
     beer = Beer.find_by(id: params[:id])
+    opinion = beer.opinions.find_by(user_id: session[:user_id])
     if logged_in?
       beer.name = params[:name]
       beer.description = params[:description]
+
+      opinion.update(user_rating: params[:user_rating], tasting_notes:params[:tasting_notes]) if opinion
+
       if beer.save && beer.errors.empty?
-        flash[:success] = "Scuccessfully Updated #{beer.name.capitalize}"
+        flash[:success] = "Scuccessfully Updated '#{beer.name}'"
         redirect "/beers/#{beer.id}"
       else
         flash[:error] = beer.errors.full_messages
@@ -62,16 +67,10 @@ class BeersController < ApplicationController
   end
 
   helpers do
-    def overall_rating(beer)
-      if beer.opinions.blank?
-        "Not Enough Raitings"
-      else
-        beer.opinions.average(:user_rating).to_f.round(1)
-      end
-    end
 
     def owner?(beer)
       session[:user_id] == beer.created_by
     end
+
   end
 end

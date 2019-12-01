@@ -93,5 +93,14 @@ class ApplicationController < Sinatra::Base
       flash[:error] = ["Access Denied"]
       redirect '/login'
     end
+
+    def overall_rating(beer)
+      if beer.opinions.blank?
+        "Not Enough Raitings"
+      else
+        beer.opinions.average(:user_rating).to_f.round(1)
+      end
+    end
+    
   end
 end

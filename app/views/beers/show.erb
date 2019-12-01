@@ -5,9 +5,11 @@
     <p>⭐ Rating: <span><%= overall_rating(beer)%></span></p>
   </div>
   <% if review %>
+  <br>
+  <hr>
   <div>
     <p class="rating">My Raiting: <span><%= review.user_rating %></span></p>
-    <p>Tasting notes: <%= review.tasting_notes %></p>
+    <p> <span class="rating">Notes:</span> <br><br><%= review.tasting_notes %></p>
   </div>
   <% end %>
 
