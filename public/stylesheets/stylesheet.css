@@ -77,6 +77,8 @@ body{
 
 #views{
   padding: 20px;
+  overflow: hidden;
+
 }
 
 #views h2{
@@ -106,6 +108,7 @@ body{
 }
 
 #views article {
+  clear:both;
   background: rgba(158, 122, 85, 0.85);
   margin: 20px;
   padding: 20px;
@@ -116,10 +119,10 @@ body{
 form hr{
   margin: 40px 0;
 }
-
-
-article h4 a{
+article h4{
   font: small-caps 30px 'Marker Felt';
+}
+article h4 a{
   text-decoration: none;
   color: #000;
 }
@@ -139,7 +142,7 @@ article .large-type{
   font: small-caps 20px 'Marker Felt';
 }
 
-#views article .button{
+#views .button{
   font-size:18px;
   float: right;
   width: 105px;
@@ -154,12 +157,20 @@ article .large-type{
   margin: 10px;
 }
 
-#views article .button:hover{
+#views .button:hover{
   background: #2AD2C9;
   color: #006bb3;
   cursor: pointer;
 }
-
+#views #create_new{
+  overflow: hidden;
+  margin: 0 20px;
+  padding:2px;
+}
+#views #create_new .button{
+  width: 98%;
+  margin: 0;
+}
 /* For tablets: */
 @media only screen and (min-width: 600px) {
 
@@ -186,5 +197,8 @@ article .large-type{
    }
    #mainContent .quick-menu{
        width: 10%;
+   }
+   #views #create_new .button{
+     width: 120px;
    }
 }
