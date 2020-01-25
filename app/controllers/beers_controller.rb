@@ -36,7 +36,7 @@ class BeersController < ApplicationController
         flash[:success] = "Successfully Created '#{beer.name}'"
         redirect "/users/#{user.slug}/beers"
       else
-        flash[:error] = user.errors.full_messages
+        flash[:error] = beer.errors.full_messages
         redirect '/beers/new'
       end
     end
