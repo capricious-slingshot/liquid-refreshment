@@ -130,6 +130,11 @@ article p{
   margin: 20px 0 0;
 }
 
+article .large-type{
+  font-size: 1.6em;
+  text-align: center;
+}
+
 #views article .rating {
   font: small-caps 20px 'Marker Felt';
 }

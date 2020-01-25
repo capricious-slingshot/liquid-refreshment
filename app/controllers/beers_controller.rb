@@ -1,4 +1,5 @@
 class BeersController < ApplicationController
+
   get '/beers' do
     if logged_in?
       erb :'/beers/index', locals: { beers: Beer.all }
@@ -6,6 +7,41 @@ class BeersController < ApplicationController
       access_denied
     end
   end
+
+  get '/beers/new' do
+    if logged_in?
+      erb :'/beers/new'
+    else
+      access_denied
+    end
+  end
+
+  post '/beers' do
+    user = User.find_by(id: session[:user_id])
+
+    #needs fuzzy search enhancement
+    beer = Beer.find_by(name: params[:name]) || Beer.find_by(name: params[:description])
+
+    if !beer.nil?
+      flash[:error] = ["Beer Already Exzists"]
+      redirect '/beers/new'
+    else
+      beer = Beer.new(name: params[:name],
+                      description: params[:description],
+                      created_by: user.id
+                     )
+      if beer.valid? && beer.errors.empty?
+        beer.save
+        flash[:success] = "Successfully Created '#{beer.name}'"
+        redirect "/users/#{user.slug}/beers"
+      else
+        flash[:error] = user.errors.full_messages
+        redirect '/beers/new'
+      end
+    end
+  end
+
+
 
   get '/beers/:id' do
     beer = Beer.find_by(id: params[:id])

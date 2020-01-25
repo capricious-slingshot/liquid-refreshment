@@ -1,0 +1,24 @@
+<article>
+  <form action="/beers" method="POST">
+    <label for="name">Name of Beer:</label>
+    <input type="text" name="name" id="name">
+    <label for="description">Description:</label>
+    <input type="text" name="description" id="description">
+    <hr>
+    <label for="my_rating">My Rating: </label>
+    <select name="user_rating" class="select-css">
+      <option value="">-- Select --</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <br>
+    <br>
+    <br>
+    <label for="my_rating">My Tasting Notes:</label>
+    <input type="text" name="tasting_notes">
+    <input type="submit" value="Add Beer" class="button">
+  </form>
+</article>

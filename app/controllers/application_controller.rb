@@ -69,6 +69,7 @@ class ApplicationController < Sinatra::Base
     def login(email, password)
       user  = User.find_by(email: email)
       if user && user.authenticate(password)
+        #is this safe to expose via cookie?
         session[:user_id] = user.id
       else
         flash[:error] = ["Invalid Credientals"]
@@ -101,6 +102,6 @@ class ApplicationController < Sinatra::Base
         beer.opinions.average(:user_rating).to_f.round(1)
       end
     end
-    
+
   end
 end
