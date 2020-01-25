@@ -20,11 +20,12 @@ class BeersController < ApplicationController
     user = User.find_by(id: session[:user_id])
 
     #needs fuzzy search enhancement
-    beer = Beer.find_by(name: params[:name]) || Beer.find_by(name: params[:description])
+    beer = Beer.find_by(name: params[:name]) || Beer.find_by(description: params[:description])
 
     if !beer.nil?
       flash[:error] = ["Beer Already Exzists"]
-      redirect '/beers/new'
+      redirect "/beers/#{beer.id}"
+      #add option to add raiting here
     else
       beer = Beer.new(name: params[:name],
                       description: params[:description],
