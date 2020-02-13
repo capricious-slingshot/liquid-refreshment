@@ -21,8 +21,8 @@
           <% else %>
             <li><a href="/users/<%= build_slug %>/settings" id="settings-icon"><img src="/images/settings-icon.jpg" alt="User Settings"></a></li>
             <li><a href="/logout"class="menu-item" >Log Out</a></li>
-            <li><a href="/users/<%= build_slug %>/beers" class="menu-item" <%= 'id="on"' if active_page?("user/#{build_slug}/beers") %>">My Beers</a></li>
-            <li><a href="/beers" class="menu-item" <%= 'id="on"' if active_page?("beers") %>">Leaderboard</a></li>
+            <li><a href="/users/<%= build_slug %>/beers" class="menu-item" <%= 'id="on"' if active_page?("/users/#{build_slug}/beers") %>">My Beers</a></li>
+            <li><a href="/beers" class="menu-item" <%= 'id="on"' if active_page?("/beers") %>">Leaderboard</a></li>
           <% end %>
         </ul>
       </nav>

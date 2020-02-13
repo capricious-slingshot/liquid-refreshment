@@ -86,8 +86,8 @@ class ApplicationController < Sinatra::Base
       user ? user.slug : ""
     end
 
-    def active_page?(path='')
-      request.path_info == '/' + path
+    def active_page?(path)
+      request.path_info == path
     end
 
     def access_denied
