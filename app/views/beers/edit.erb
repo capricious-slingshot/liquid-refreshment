@@ -6,22 +6,30 @@
     <input type="text" name="description" id="description" value="<%= beer.description %>">
     <hr>
     <% if opinion %>
-    <label for="my_rating">My Rating: </label>
-    <select name="user_rating" class="select-css">
-      <option value="">-- Select --</option>
-      <option value="1" <%= "selected" if opinion.user_rating == 1 %>>1</option>
-      <option value="2" <%= "selected" if opinion.user_rating == 2 %>>2</option>
-      <option value="3" <%= "selected" if opinion.user_rating == 3 %>>3</option>
-      <option value="4" <%= "selected" if opinion.user_rating == 4 %>>4</option>
-      <option value="5" <%= "selected" if opinion.user_rating == 5 %>>5</option>
-    </select>
-    <br>
-    <br>
-    <br>
-    <label for="my_rating">My Tasting Notes:</label>
-    <input type="text" name="tasting_notes" value="<%= opinion.tasting_notes %>">
+      <label for="my_rating">My Rating: </label>
+      <select name="user_rating" class="select-css">
+        <option value="">-- Select --</option>
+        <option value="1" <%= "selected" if opinion.user_rating == 1 %>>1</option>
+        <option value="2" <%= "selected" if opinion.user_rating == 2 %>>2</option>
+        <option value="3" <%= "selected" if opinion.user_rating == 3 %>>3</option>
+        <option value="4" <%= "selected" if opinion.user_rating == 4 %>>4</option>
+        <option value="5" <%= "selected" if opinion.user_rating == 5 %>>5</option>
+      </select>
+      <br>
+      <br>
+      <br>
+      <label for="tasting_notes">My Tasting Notes:</label>
+      <input type="text" name="tasting_notes" value="<%= opinion.tasting_notes %>">
     <% else %>
-    <p>You have not rated this beer yet!</p>
+      <p>You have not rated this beer yet!</p>
     <% end %>
     <input type="submit" value="Update" class="button">
   </form>
+  <% if owner?(beer) %>
+    <p>
+      <form action="/beers/<%= beer.id %>/delete" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete" class="button">
+      </form>
+    </p>
+  <% end %>

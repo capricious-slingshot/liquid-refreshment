@@ -1,12 +1,8 @@
 class UsersController < ApplicationController
 
   get '/users/:slug/beers' do
-    if logged_in?
-      user = User.find_by_slug(params[:slug])
-      erb :'users/index', locals: {user: user}
-    else
-      access_denied
-    end
+    user = User.find_by_slug(params[:slug])
+    logged_in? ? (erb :'users/index', locals: {user: user}) : access_denied
   end
 
   get '/users/:slug/settings' do

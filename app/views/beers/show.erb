@@ -1,30 +1,43 @@
 <article>
-
   <h4><%= beer.name %></h4>
   <p><%= beer.description %></p>
   <div class="rating">
     <p>⭐ Rating: <span><%= overall_rating(beer)%></span></p>
   </div>
   <% if review %>
-  <br>
-  <hr>
-  <div>
-    <p class="rating">My Raiting: <span><%= review.user_rating %></span></p>
-    <p> <span class="rating">Notes:</span> <br><br><%= review.tasting_notes %></p>
-  </div>
+    <br>
+    <hr>
+    <div>
+      <p class="rating">My Raiting: <span><%= review.user_rating %></span></p>
+      <p> <span class="rating">Notes:</span> <br><br><%= review.tasting_notes %></p>
+    </div>
   <% end %>
-
   <% if logged_in? %>
+    <% if beer.not_rated?(session[:user_id])%>
+      <p>You have not rated this beer yet!</p>
+      <br>
+    <% end%>
   <div>
-    <% if owner?(beer) %>
-      <p>
-        <form action="/beers/<%= beer.id %>/delete" method="POST">
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" value="delete" class="button">
-        </form>
-      </p>
+    <% if beer.not_rated?(session[:user_id])%>
+      <form action="/beers/<%= beer.id %>" method="POST">
+        <label for="my_rating">My Rating: </label>
+        <select name="user_rating" class="select-css">
+          <option value="">-- Select --</option>
+          <option value="1">1  Star</option>
+          <option value="2">2  Stars</option>
+          <option value="3">3  Stars</option>
+          <option value="4">4  Stars</option>
+          <option value="5">5  Stars</option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <label for="tasting_notes">My Tasting Notes:</label>
+        <input type="text" name="tasting_notes" id="tasting_notes">
+        <p><input type="submit" value="Save" class="button"></p>
+      </form>
     <% end %>
-    <p><a href="/beers/<%= beer.id %>/edit" class="button">edit</a></p>
+    <p><a href="/beers/<%= beer.id %>/edit" class="button">Edit Beer</a></p>
   </div>
   <% end %>
 </article>

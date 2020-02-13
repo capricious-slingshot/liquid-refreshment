@@ -13,4 +13,9 @@ class User < ActiveRecord::Base
   def self.find_by_slug(slug)
     User.all.find {|i| i.slug == slug}
   end
+
+  # def all_beers
+  #   #find all beers that belong to user
+  #   #find all beers that have been rated by user
+  # end
 end

@@ -97,9 +97,9 @@ class ApplicationController < Sinatra::Base
 
     def overall_rating(beer)
       if beer.opinions.blank?
-        "Not Enough Raitings"
+        "No Raitings Yet"
       else
-        beer.opinions.average(:user_rating).to_f.round(1)
+        "#{beer.opinions.average(:user_rating).to_f.round(1)} out of #{beer.opinions.length}"
       end
     end
 
