@@ -23,13 +23,20 @@
     <% else %>
       <p>You have not rated this beer yet!</p>
     <% end %>
-    <input type="submit" value="Update" class="button">
+    <input type="submit" value="Update" class="button editButton">
   </form>
-  <% if owner?(beer) %>
+
     <p>
       <form action="/beers/<%= beer.slug %>/delete" method="POST">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete" class="button">
+        <input type="submit" value="Delete Beer" class="button editButton">
+      </form>
+    </p>
+  <% if opinion %>
+    <p>
+      <form action="/beers/<%= beer.slug %>/remove-review" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Remove Rating" class="button editButton">
       </form>
     </p>
   <% end %>

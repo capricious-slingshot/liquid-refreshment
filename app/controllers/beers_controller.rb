@@ -94,12 +94,12 @@ class BeersController < ApplicationController
   delete '/beers/:slug/delete' do
     beer = Beer.find_by_slug(params[:slug])
 
-    if logged_in? && owner?(beer)
+    if logged_in?
       if beer.delete && beer.errors.empty?
         flash[:success] = "Successfully Deleted #{beer.name.capitalize}"
         redirect '/beers'
       else
-        flash[:error] = user.errors.full_messages
+        flash[:error] = beer.errors.full_messages
         redirect "/beers/#{beer.slug}"
       end
     else
@@ -107,11 +107,19 @@ class BeersController < ApplicationController
     end
   end
 
-  helpers do
+  delete '/beers/:slug/remove-review' do
+    beer = Beer.find_by_slug(params[:slug])
+    opinion = Opinion.find_by(user_id: session[:user_id], beer_id: beer.id)
 
-    def owner?(beer)
-      session[:user_id] == beer.created_by
+    if logged_in?
+      if opinion.delete && opinion.errors.empty?
+        flash[:success] = "Successfully Removed Review"
+      else
+        flash[:error] = opinion.errors.full_messages
+      end
+      redirect "/beers/#{beer.slug}"
+    else
+      access_denied
     end
-
   end
 end

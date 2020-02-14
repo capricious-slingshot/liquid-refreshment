@@ -53,7 +53,7 @@ body{
 #mainContent h1{
   clear: both;
   padding: 10px 5px;
-  font-size: 20px;
+  font-size: 30px;
   background-color: #fff;
   color: #000;
   border-bottom: 5px solid #2AD2C9;
@@ -85,6 +85,7 @@ body{
   clear:both;
   text-align: center;
   padding: 2em;
+  font-size: 23px;
 }
 
 #mainContent input{
@@ -143,18 +144,18 @@ article .large-type{
 }
 
 #views .button{
-  font-size:18px;
+  font-size: 20px;
   float: right;
-  width: 105px;
+  width: 100%;
   border: 2px solid #2AD2C9;
   box-shadow: 0 0 0 2px skyblue;
   text-align: center;
   text-decoration: none;
   background: #006bb3;
   color: #2AD2C9;
-  padding: 8px 0;
+  padding: 15px 0;
   border-radius: 15px;
-  margin: 10px;
+  margin-top: 20px;
 }
 
 #views .button:hover{
@@ -199,6 +200,11 @@ article .large-type{
        width: 10%;
    }
    #views #create_new .button{
-     width: 120px;
+     width: 140px;
+   }
+   #views .editButton{
+       width: 160px;
+       margin-right: 20px;
+       padding: 10px;
    }
 }

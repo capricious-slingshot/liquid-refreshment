@@ -34,10 +34,10 @@
         <br>
         <label for="tasting_notes">My Tasting Notes:</label>
         <input type="text" name="tasting_notes" id="tasting_notes">
-        <p><input type="submit" value="Save" class="button"></p>
+        <p><input type="submit" value="Save Rating" class="button editButton"></p>
       </form>
     <% end %>
-    <p><a href="/beers/<%= beer.slug %>/edit" class="button">Edit Beer</a></p>
+    <p><a href="/beers/<%= beer.slug %>/edit" class="button editButton">Edit Beer</a></p>
   </div>
   <% end %>
 </article>
