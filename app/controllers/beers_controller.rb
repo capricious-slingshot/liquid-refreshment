@@ -15,7 +15,7 @@ class BeersController < ApplicationController
 
     if !beer.nil?
       flash[:error] = ["Beer Already Exzists"]
-      redirect "/beers/#{beer.id}"
+      redirect "/beers/#{beer.slug}"
     else
       beer = Beer.new(name: params[:name],
                       description: params[:description],
@@ -24,7 +24,7 @@ class BeersController < ApplicationController
       if beer.valid? && beer.errors.empty?
         beer.save
         flash[:success] = "Successfully Created '#{beer.name}'"
-        redirect "/beers/#{beer.id}"
+        redirect "/beers/#{beer.slug}"
       else
         flash[:error] = beer.errors.full_messages
         redirect '/beers/new'
@@ -32,8 +32,8 @@ class BeersController < ApplicationController
     end
   end
 
-  get '/beers/:id' do
-    beer = Beer.find_by(id: params[:id])
+  get '/beers/:slug' do
+    beer = Beer.find_by_slug(params[:slug])
     if logged_in?
       user = User.find_by(id: session[:user_id])
       review = user && user.opinions.find_by(beer_id: beer.id)
@@ -43,9 +43,10 @@ class BeersController < ApplicationController
     end
   end
 
-  post '/beers/:id' do
+  post '/beers/:slug' do
+    beer = Beer.find_by_slug(params[:slug])
     rating = Opinion.new(user_id: session[:user_id],
-                beer_id: params[:id],
+                beer_id: beer.id,
                 user_rating: params[:user_rating],
                 tasting_notes: params[:tasting_notes]
                 )
@@ -55,11 +56,11 @@ class BeersController < ApplicationController
     else
       flash[:error] = rating.errors.full_messages
     end
-    redirect "/beers/#{params[:id]}"
+    redirect "/beers/#{params[:slug]}"
   end
 
-  get '/beers/:id/edit' do
-    beer = Beer.find_by(id: params[:id])
+  get '/beers/:slug/edit' do
+    beer = Beer.find_by_slug(params[:slug])
     opinion = beer.opinions.find_by(user_id: session[:user_id])
 
     if logged_in?
@@ -69,8 +70,8 @@ class BeersController < ApplicationController
     end
   end
 
-  patch '/beers/:id/edit' do
-    beer = Beer.find_by(id: params[:id])
+  patch '/beers/:slug/edit' do
+    beer = Beer.find_by_slug(params[:slug])
     opinion = beer.opinions.find_by(user_id: session[:user_id])
     if logged_in?
       beer.name = params[:name]
@@ -80,18 +81,18 @@ class BeersController < ApplicationController
 
       if beer.save && beer.errors.empty?
         flash[:success] = "Successfully Updated '#{beer.name}'"
-        redirect "/beers/#{beer.id}"
+        redirect "/beers/#{beer.slug}"
       else
         flash[:error] = beer.errors.full_messages
-        redirect "/beers/#{beer.id}/edit"
+        redirect "/beers/#{beer.slug}/edit"
       end
     else
       access_denied
     end
   end
 
-  delete '/beers/:id/delete' do
-    beer = Beer.find_by(id: params[:id])
+  delete '/beers/:slug/delete' do
+    beer = Beer.find_by_slug(params[:slug])
 
     if logged_in? && owner?(beer)
       if beer.delete && beer.errors.empty?
@@ -99,7 +100,7 @@ class BeersController < ApplicationController
         redirect '/beers'
       else
         flash[:error] = user.errors.full_messages
-        redirect "/beers/#{params[:id]}"
+        redirect "/beers/#{beer.slug}"
       end
     else
       access_denied

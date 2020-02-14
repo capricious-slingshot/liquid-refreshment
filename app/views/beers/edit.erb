@@ -1,4 +1,4 @@
-  <form action="/beers/<%= beer.id %>/edit" method="POST">
+  <form action="/beers/<%= beer.slug %>/edit" method="POST">
     <input type="hidden" name="_method" value="PATCH">
     <label for="name">Name of Beer:</label>
     <input type="text" name="name" value="<%= beer.name %>" id="name">
@@ -27,7 +27,7 @@
   </form>
   <% if owner?(beer) %>
     <p>
-      <form action="/beers/<%= beer.id %>/delete" method="POST">
+      <form action="/beers/<%= beer.slug %>/delete" method="POST">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete" class="button">
       </form>

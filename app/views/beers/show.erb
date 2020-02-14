@@ -19,7 +19,7 @@
     <% end%>
   <div>
     <% if beer.not_rated?(session[:user_id])%>
-      <form action="/beers/<%= beer.id %>" method="POST">
+      <form action="/beers/<%= beer.slug %>" method="POST">
         <label for="my_rating">My Rating: </label>
         <select name="user_rating" class="select-css">
           <option value="">-- Select --</option>
@@ -37,7 +37,7 @@
         <p><input type="submit" value="Save" class="button"></p>
       </form>
     <% end %>
-    <p><a href="/beers/<%= beer.id %>/edit" class="button">Edit Beer</a></p>
+    <p><a href="/beers/<%= beer.slug %>/edit" class="button">Edit Beer</a></p>
   </div>
   <% end %>
 </article>

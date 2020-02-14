@@ -3,7 +3,7 @@
 
   <% beers.each do |beer| %>
     <article>
-      <h4><a href="/beers/<%= beer.id %>"><%= beer.name %></a></h4>
+      <h4><a href="/beers/<%= beer.slug %>"><%= beer.name %></a></h4>
       <p><%= beer.description %></p>
       <p class="rating">⭐ Raiting: <span><%= overall_rating(beer)%></span></p>
     </article>

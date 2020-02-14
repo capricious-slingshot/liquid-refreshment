@@ -83,7 +83,7 @@ class ApplicationController < Sinatra::Base
 
     def build_slug
       user = User.find_by(id: session[:user_id])
-      user ? user.slug : ""
+      user ? user.slug : nil
     end
 
     def active_page?(path)
