@@ -28,8 +28,8 @@ To install this application onto your local machine:
 
 [Liquid Refreshment Sinatra Application Demo]()
 
-Additionaly, here is a blog post about creating my first application:
-[Liquid Refreshment Sinatra Application]()
+Additionally, here is a blog post about creating my first application:
+[Liquid Refreshment Sinatra Application](https://capricious-slingshot.github.io/liquid_refreshment)
 
 ## Contributing
 
