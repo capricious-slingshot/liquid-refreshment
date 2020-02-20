@@ -2,7 +2,7 @@
 
 
 ## Installation
-To install this gem onto your local machine:  
+To install this application onto your local machine:  
 
 
 - clone the repository from [GitHub](https://github.com/capricious-slingshot/liquid-refreshment)
@@ -15,11 +15,11 @@ To install this gem onto your local machine:
   Enjoy Drinking Beer!
 
 ## Usage
- A short video I made on how to use this gem:
+ A short video I made on how to use this application:
 
 [Liquid Refreshment Sinatra Application Demo]()
 
-Additionaly, here is a blog post about creating my first gem:
+Additionaly, here is a blog post about creating my first application:
 [Liquid Refreshment Sinatra Application]()
 
 ## Contributing
@@ -28,4 +28,4 @@ Bug reports and pull requests are welcome on [GitHub](https://github.com/caprici
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
