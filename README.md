@@ -1,4 +1,6 @@
 # liquid-refreshment
+Track your favorite brews
+
 Liquid Refreshment is an sinatra application that I created to help me keep
 track of a constantly changing roster of beers at a local brewery I frequent.
 This brewery releases a handful of beers every month, and has a constant rotation
